@@ -29,19 +29,24 @@ export default function Shop() {
   };
 
   const sendMessage = () => {
-    liff
-      .sendMessages([
-        {
-          type: "text",
-          text: "Hello, World!",
-        },
-      ])
-      .then(() => {
-        console.log(":: message sent ::");
-      })
-      .catch((err) => {
-        console.log("error", err);
-      });
+    const text = prompt("Please enter your name:", "");
+    const isLoginLiff = liff.isLoggedIn();
+    console.log(isLoginLiff, text);
+    if (isLoginLiff) {
+      liff
+        .sendMessages([
+          {
+            type: "text",
+            text: text,
+          },
+        ])
+        .then(() => {
+          console.log(":: message sent ::");
+        })
+        .catch((err) => {
+          console.log("error", err);
+        });
+    }
   };
   return (
     <div className="container">
