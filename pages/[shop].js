@@ -27,6 +27,22 @@ export default function Shop() {
       .init({ liffId: KEY_LINE_LIFF })
       .then(() => console.log(":: Liff init ::"));
   };
+
+  const sendMessage = () => {
+    liff
+      .sendMessages([
+        {
+          type: "text",
+          text: "Hello, World!",
+        },
+      ])
+      .then(() => {
+        console.log(":: message sent ::");
+      })
+      .catch((err) => {
+        console.log("error", err);
+      });
+  };
   return (
     <div className="container">
       <Head>
@@ -39,6 +55,7 @@ export default function Shop() {
         </h1>
         <p className="des">DisplayName : {useProfile.displayName}</p>
         <p className="des">UId : {useProfile.userId}</p>
+        <button onClick={() => sendMessage()}>Send Message</button>
       </main>
 
       <style jsx>{`
