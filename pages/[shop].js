@@ -37,7 +37,7 @@ export default function Shop() {
         .sendMessages([
           {
             type: "text",
-            text: text,
+            text: `Order :${text}`,
           },
         ])
         .then(() => {
