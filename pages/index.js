@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-const KEY_LINE_LIFF = "1656533574-jOJ3rRv4";
 import { useRouter } from "next/router";
 export default function Home() {
   const router = useRouter();
-
+  const [useLocaiton, setLocation] = useState("");
   useEffect(() => {
+    setLocation(window.location.href);
+    console.log(":: before ::");
     const queryString = decodeURIComponent(window.location.search).replace(
       "?liff.state=",
       ""
@@ -13,7 +14,11 @@ export default function Home() {
     if (queryString) {
       router.push(`${queryString}`);
     }
-  }, []);
+  });
 
-  return <div className="container">Home</div>;
+  // useEffect(() => {
+
+  // }, []);
+
+  return <div className="container">Home {useLocaiton}</div>;
 }

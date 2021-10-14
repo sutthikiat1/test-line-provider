@@ -13,6 +13,7 @@ export default function Shop() {
   });
   useEffect(() => {
     (async () => {
+      console.log(":: start ::");
       await initialLineLiff();
       if (liff.isLoggedIn()) {
         const { displayName, pictureUrl, userId } = await liff.getProfile();
@@ -22,7 +23,9 @@ export default function Shop() {
   }, []);
 
   const initialLineLiff = async () => {
-    await liff.init({ liffId: KEY_LINE_LIFF });
+    await liff
+      .init({ liffId: KEY_LINE_LIFF })
+      .then(() => console.log(":: Liff init ::"));
   };
   return (
     <div className="container">
